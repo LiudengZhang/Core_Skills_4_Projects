@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Core Skills for Claude Code Projects</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --accent: #58a6ff;
+    --accent-dim: #1f6feb33;
+    --green: #3fb950;
+    --purple: #bc8cff;
+    --orange: #d29922;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+  header {
+    text-align: center;
+    padding: 2rem 0 1.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  header h1 { font-size: 1.8rem; font-weight: 600; }
+  header p { color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem; }
+  .badge {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+  .badge-count { background: var(--accent-dim); color: var(--accent); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 1.25rem;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .card-icon {
+    width: 36px; height: 36px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .icon-dashboard { background: #da368833; color: #f778ba; }
+  .icon-dispatch { background: #1f6feb33; color: #58a6ff; }
+  .icon-history  { background: #d2992233; color: #d29922; }
+  .icon-notes    { background: #3fb95033; color: #3fb950; }
+  .card-title { font-size: 1.05rem; font-weight: 600; }
+  .card-title code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.9rem;
+    color: var(--accent);
+  }
+  .card-desc {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin-bottom: 1rem;
+  }
+  .card-features {
+    list-style: none;
+    font-size: 0.85rem;
+  }
+  .card-features li {
+    padding: 0.25rem 0;
+    color: var(--text-muted);
+  }
+  .card-features li::before {
+    content: '>';
+    color: var(--accent);
+    margin-right: 0.5rem;
+    font-family: monospace;
+  }
+  .install {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+  .install h2 { font-size: 1.1rem; margin-bottom: 0.75rem; }
+  .install pre {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem;
+    overflow-x: auto;
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    font-size: 0.85rem;
+    color: var(--green);
+  }
+  .install p {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin-top: 0.75rem;
+  }
+  footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Core Skills for Claude Code Projects <span class="badge badge-count">4 skills</span></h1>
+    <p>Reusable Claude Code skills for project management, task orchestration, and session tracking.</p>
+  </header>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-dashboard">&#9638;</div>
+        <div class="card-title"><code>/dashboard</code></div>
+      </div>
+      <div class="card-desc">
+        Generate an HTML dashboard showing current task status, blockers, agent components, recent conversations, and project notes.
+      </div>
+      <ul class="card-features">
+        <li>Multi-agent component tracking (each agent writes its own JSON)</li>
+        <li>Task status synced with TaskList</li>
+        <li>Parses conversation history from local JSONL files</li>
+        <li>Integrates project notes grouped by plan</li>
+        <li>Auto-refresh single-page HTML output</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-dispatch">&#9881;</div>
+        <div class="card-title"><code>/dispatch</code></div>
+      </div>
+      <div class="card-desc">
+        Create and manage task plans for multi-agent execution. Commander/Executor pattern where one terminal creates plans and others execute them.
+      </div>
+      <ul class="card-features">
+        <li><code>/dispatch create</code> &mdash; structured interview to build a plan</li>
+        <li><code>/dispatch execute</code> &mdash; executor picks up and runs a plan</li>
+        <li>Completion checklists (figures, analysis, writing)</li>
+        <li>Context files for shared project knowledge</li>
+        <li>Dashboard integration on plan completion</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-history">&#9201;</div>
+        <div class="card-title"><code>/history</code></div>
+      </div>
+      <div class="card-desc">
+        Browse and search conversation history from JSONL files. List sessions, summarize conversations, search for keywords across sessions.
+      </div>
+      <ul class="card-features">
+        <li><code>/history list [n]</code> &mdash; recent sessions with previews</li>
+        <li><code>/history summarize &lt;id&gt;</code> &mdash; date range, topics, files modified</li>
+        <li><code>/history search "keyword"</code> &mdash; cross-session search with context</li>
+        <li>Python helper with parse, summary, and search functions</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-notes">&#9998;</div>
+        <div class="card-title"><code>/notes</code></div>
+      </div>
+      <div class="card-desc">
+        Manage project notes linked to tasks, plans, and components. Notes stored as JSON files and displayed on the dashboard grouped by plan.
+      </div>
+      <ul class="card-features">
+        <li><code>/note add</code> &mdash; link to tasks, plans, figures, components</li>
+        <li>4 note types: finding, decision, blocker, question</li>
+        <li><code>/note show</code> &mdash; filter by plan, task, type, or component</li>
+        <li><code>/note archive</code> &mdash; move resolved notes out of active view</li>
+        <li>Python helper with full CRUD and grouped-by-plan queries</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="install">
+    <h2>Installation</h2>
+    <pre>git clone https://github.com/LiudengZhang/Core_Skills_4_Projects.git
+cp -r Core_Skills_4_Projects/core_dashboard  your-project/.claude/skills/dashboard
+cp -r Core_Skills_4_Projects/core_dispatch   your-project/.claude/skills/dispatch
+cp -r Core_Skills_4_Projects/core_history    your-project/.claude/skills/history
+cp -r Core_Skills_4_Projects/core_notes      your-project/.claude/skills/notes</pre>
+    <p>Each skill folder contains a <code>SKILL.md</code> file (and optional helpers) that Claude Code loads automatically from <code>.claude/skills/</code>.</p>
+  </div>
+
+  <footer>
+    Core Skills for Claude Code &middot; github.com/LiudengZhang/Core_Skills_4_Projects
+  </footer>
+
+</div>
+</body>
+</html>
