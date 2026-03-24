@@ -136,8 +136,8 @@
 <div class="container">
 
   <header>
-    <h1>Core Skills for Claude Code Projects <span class="badge badge-count">4 skills</span></h1>
-    <p>Reusable Claude Code skills for project management, task orchestration, and session tracking.</p>
+    <h1>Core Skills for Claude Code Projects <span class="badge badge-count">11 skills</span></h1>
+    <p>Reusable Claude Code skills for project management, task orchestration, session tracking, and resume-driven OSS contribution.</p>
   </header>
 
   <div class="grid">
@@ -209,6 +209,119 @@
       </ul>
     </div>
 
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: #58a6ff33; color: #58a6ff;">&#9733;</div>
+        <div class="card-title"><code>/oss</code></div>
+      </div>
+      <div class="card-desc">
+        Track open-source contributions optimized for resume impact. Dashboard shows skill/layer coverage, gaps to fill, and draft resume bullets.
+      </div>
+      <ul class="card-features">
+        <li><code>/oss add</code> &mdash; add a contribution with resume bullet</li>
+        <li><code>/oss status</code> &mdash; update PR status (planned/in-review/merged)</li>
+        <li><code>/oss gaps</code> &mdash; identify skill and layer gaps to fill next</li>
+        <li><code>/oss resume</code> &mdash; generate resume section from merged PRs</li>
+        <li>Self-contained HTML dashboard with coverage visualization</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: #3fb95033; color: #3fb950;">&#9673;</div>
+        <div class="card-title"><code>oss-recon</code></div>
+      </div>
+      <div class="card-desc">
+        Map a repository's conventions, toolchain, test patterns, and active maintainers before your first contribution.
+      </div>
+      <ul class="card-features">
+        <li>Extract from CONTRIBUTING.md, pyproject.toml, .pre-commit-config.yaml</li>
+        <li>Read 3 recent merged PRs for style patterns</li>
+        <li>Identify active maintainers and review turnaround</li>
+        <li>scverse-specific notes (towncrier, numpydoc, AnnData tests)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: #d2992233; color: #d29922;">&#9670;</div>
+        <div class="card-title"><code>oss-select</code></div>
+      </div>
+      <div class="card-desc">
+        Score issues using rubric + resume bullet filter + 2-deep-1-broad portfolio strategy.
+      </div>
+      <ul class="card-features">
+        <li>Draft resume bullet BEFORE choosing issue (negative filter)</li>
+        <li>4-dimension scoring rubric (core proximity, maintainer signal, scope, story)</li>
+        <li>Portfolio strategy: 2 deep + 1 broad across layers</li>
+        <li>Interview readiness check for each candidate</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: #bc8cff33; color: #bc8cff;">&#9654;</div>
+        <div class="card-title"><code>oss-first-pr</code></div>
+      </div>
+      <div class="card-desc">
+        Hybrid first PR strategy: small-but-real contribution that exercises the full pipeline before escalating.
+      </div>
+      <ul class="card-features">
+        <li>Enforces hybrid approach (not trivial, not too ambitious)</li>
+        <li>Full pipeline walkthrough (fork, pre-commit, test, changelog, CI)</li>
+        <li>Prevents #1 mistake: missing towncrier fragment</li>
+        <li>Success criteria before escalating to substantive work</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: #f8514933; color: #f85149;">&#9635;</div>
+        <div class="card-title"><code>oss-fix</code></div>
+      </div>
+      <div class="card-desc">
+        Implement fixes with self-critique checklist. Claude handles 60-80% of conventions; you handle editorial judgment.
+      </div>
+      <ul class="card-features">
+        <li>Clear split: what Claude automates vs what needs human judgment</li>
+        <li>7-item pre-submission checklist</li>
+        <li>Adversarial self-review before pushing</li>
+        <li>Scverse-specific pitfall prevention</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: #58a6ff33; color: #58a6ff;">&#9650;</div>
+        <div class="card-title"><code>oss-submit</code></div>
+      </div>
+      <div class="card-desc">
+        PR description craftsmanship with dual framing for bioinformatics vs software engineering audiences.
+      </div>
+      <ul class="card-features">
+        <li>Convention-matched PR descriptions</li>
+        <li>Dual framing: domain language vs engineering language</li>
+        <li>Dashboard status update on submission</li>
+        <li>Post-merge interview prep checklist</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: #da368833; color: #f778ba;">&#9825;</div>
+        <div class="card-title"><code>oss-review</code></div>
+      </div>
+      <div class="card-desc">
+        Handle reviewer feedback as a public artifact. Extract interview material from the review process.
+      </div>
+      <ul class="card-features">
+        <li>Response principles: fast, concise, grateful, never argue</li>
+        <li>Common feedback pattern responses</li>
+        <li>Interview material extraction from review threads</li>
+        <li>Graceful handling of PR rejection</li>
+      </ul>
+    </div>
+
   </div>
 
   <div class="install">
@@ -217,7 +330,14 @@
 cp -r Core_Skills_4_Projects/core_dashboard  your-project/.claude/skills/dashboard
 cp -r Core_Skills_4_Projects/core_dispatch   your-project/.claude/skills/dispatch
 cp -r Core_Skills_4_Projects/core_history    your-project/.claude/skills/history
-cp -r Core_Skills_4_Projects/core_notes      your-project/.claude/skills/notes</pre>
+cp -r Core_Skills_4_Projects/core_notes      your-project/.claude/skills/notes
+cp -r Core_Skills_4_Projects/oss_contributions your-project/.claude/skills/oss
+cp -r Core_Skills_4_Projects/oss_recon        your-project/.claude/skills/oss-recon
+cp -r Core_Skills_4_Projects/oss_select       your-project/.claude/skills/oss-select
+cp -r Core_Skills_4_Projects/oss_first_pr     your-project/.claude/skills/oss-first-pr
+cp -r Core_Skills_4_Projects/oss_fix          your-project/.claude/skills/oss-fix
+cp -r Core_Skills_4_Projects/oss_submit       your-project/.claude/skills/oss-submit
+cp -r Core_Skills_4_Projects/oss_review       your-project/.claude/skills/oss-review</pre>
     <p>Each skill folder contains a <code>SKILL.md</code> file (and optional helpers) that Claude Code loads automatically from <code>.claude/skills/</code>.</p>
   </div>
 
